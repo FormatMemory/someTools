@@ -1,9 +1,19 @@
 <?php
-
+      //You need to change here
       $directory = "/Users/yusheng/Tantan/tasks/downloadImg";
       $filename = "user_popularity_rank_urls.csv";
+      //.....................
+      
+      echo "\nAll Start...";
       readCSV($directory, $filename);
       echo "\n\n All Done...";
+      
+      
+      
+      
+      
+      
+      
       
       //read csv file(in a specific format), and will download file from the url in csv file
       //@directory, folder contains csv file's folder path
@@ -66,7 +76,7 @@
       //$para filepath
       function getFileExtention($filepath){
           $path_parts = pathinfo($filepath);
-          print_r($path_parts);
+          //print_r($path_parts);
           return $path_parts['extension'];
       }
 ?>
