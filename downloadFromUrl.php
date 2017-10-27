@@ -1,7 +1,7 @@
 <?php
       //You need to change here
       $directory = "./overSeaPopTop100";
-      $filename = "oversea_pop_top100_pictures.csv";
+      $filename = "oversea_pop_top100_pictures_3.csv";
       //.....................
       
       echo "\nAll Start...";
@@ -17,7 +17,8 @@
       
       
       
-      
+      //write Error log into a file
+      //@para error message, $filename to save error log
       function writeErroLog($ermsg, $filename){
             $myfile = fopen($filename, "w+") or die("Unable to open file!");
             $txt = $ermsg."\n\r";
@@ -39,7 +40,7 @@
                     //print_r($data);
                     //echo $data[0]."             ".$data[3]."\n";
                     $cityDirectory = $directory."/".$data[1];
-                    downloadIMG($cityDirectory, $data[0], $data[3]);
+                    downloadIMG($cityDirectory, $data[17]."_".$data[0], $data[3]);
                 }
                 ini_set('auto_detect_line_endings',FALSE);
                 echo "\n\n readCSVDownload Done...\n";
@@ -72,6 +73,10 @@
                   $oldName = substr($url, -20);
                   $filepath = $path."/".$oldName;
                   file_put_contents($filepath, file_get_contents($url));
+                  if($content === false){
+                      echo "file miss ".$filepath.":   ".$url."\n";
+                      writeErroLog("file miss ".$filepath.":   ".$url, 'errorLog.txt');
+                  }
                   $number = getFileNumbers($path, "*.*")+1;
                   //$ext = getFileExtention($filepath);
                   $ext = "jpeg";//"mandatory to change extention to .jpeg"
