@@ -66,7 +66,7 @@ foreach($daterange as $fileDate)
         preg_match('/([0-9]+\s[0-9]+)\n/', $row, $matches);
         list($receivedBytes, $sentBytes) = explode(' ',  $matches[0]);
 
-        if($userName = '-'){
+        if($userName == '-'){
             $userName = NULL;
         }
         if(empty($refererPage)){
